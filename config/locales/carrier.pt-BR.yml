@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models: 
+      carrier: 'Transporadora' # coloque aqui o nome do seu model
+    attributes: 
+      carrier: #coloque aqui o model novamente
+        company_name: 'Razão Social'
+        company_register: 'CPNJ'
+        brand_name: 'Nome Fantasia'
+        adress: 'Endereço'
+        city: 'Cidade'
+        state: 'Estado'
+        email_domain: 'Domínio de E-mail'

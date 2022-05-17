@@ -10,6 +10,17 @@
   </head>
 
   <body>
+    <header>
+      <h1> CC-Delivery </h1>
+      <nav>
+        <%= link_to 'Página Principal', root_path %> | 
+      </nav>
+    </header>
+    <main>
+  <div style = "margin:10px 0px" >
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </div>
     <%= yield %>
   </body>
 </html>

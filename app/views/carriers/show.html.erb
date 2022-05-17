@@ -1,0 +1,17 @@
+<h1> Detalhes sobre a transportadora: <%= @carrier.brand_name %> </h1>
+<h2> Razão social: <%= @carrier.company_name  %> </h2>
+
+<dl>
+  <dt><strong>CPNJ:</strong></dt>
+    <dd><%= @carrier.company_register %><br/></dd>
+
+  <dt><strong>Endereço de faturamento:</strong></dt>
+    <dd><%= @carrier.adress %> - <%= @carrier.city %> - <%= @carrier.state %> <br/></dd>
+
+  <dt><strong>Domínio de E-mail:</strong></dt>
+    <dd><%= @carrier.email_domain %> <br/></dd>
+</dl>
+
+<div>
+<%= link_to('Voltar', root_path)%> <br/>
+</div>
