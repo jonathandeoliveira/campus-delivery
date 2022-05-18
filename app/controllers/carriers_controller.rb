@@ -1,5 +1,9 @@
 class CarriersController < ApplicationController
 
+  def index
+    @carriers= Carrier.all
+  end
+
   def new
     @carrier = Carrier.new
   end
@@ -11,7 +15,7 @@ class CarriersController < ApplicationController
   def create
     @carrier = Carrier.new(carrier_params)
     if @carrier.save
-      redirect_to root_path, notice: 'Transportadora cadastrada com sucesso!'
+      redirect_to carriers_path, notice: 'Transportadora cadastrada com sucesso!'
     else
       flash.now[:notice] = 'Erro! Não foi possível cadastrar uma nova transportadora'
       render 'new' 

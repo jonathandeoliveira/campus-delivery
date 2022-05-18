@@ -1,26 +1,6 @@
-<section id = 'carriers'>
-  <h2>Transportadoras:</h2>
-    <div>
-      <%= link_to('Cadastrar Transportadora', new_carrier_path) %>
-    </div>
-    <% if @carriers.any?%>
-      <% @carriers.each do |c| %> 
-        <div>
-          <h1><%= link_to c.brand_name, carrier_path(c.id) %> </h1>
-          <dl>
-          <dt><strong>Fornecedor:</strong></dt>
-          <dd><%= c.brand_name %><br/></dd>
-
-          <dt><strong>Domínimo de email:</strong></dt>
-          <dd><%= c.email_domain %><br/></dd>
-
-          <dt><strong>Endereço:</strong></dt>
-          <dd><%= c.adress %> - <%= c.city %> - <%= c.state %> <br/></dd>
-
-          </dl>
-        </div>
-      <% end%>
-    <% else %>
-      <p>Não existem transportadoras cadastradas.</p>
-    <% end %>
+<section id = 'home'>
+  <h2>Olá, Bem vindo à CC-Delivery</h2>
+  <div>
+    <%= link_to('Lista de Transportadoras', carriers_path) %>
+  <div>
 </section>

@@ -6,10 +6,10 @@ describe 'Usuario visita a tela inical' do
     #act
     visit root_path
     #assert
-    expect(page).to have_content('CC-Delivery')
+    expect(page).to have_content('Olá, Bem vindo à CC-Delivery')
   end
 
-  it 'e vê o as transportadoras cadastradas' do
+  it 'e acessa a página de transportadoras cadastradas' do
     #arrange
       Carrier.create(brand_name:'Wayne Express', 
                     company_name:'Wayne Enterprises Inc', 
@@ -21,20 +21,12 @@ describe 'Usuario visita a tela inical' do
                     status:1)
     #act
     visit root_path
+    click_on 'Lista de Transportadoras'
     #assert
+    expect(current_path).to eq carriers_path
     expect(page).to have_content 'Wayne Express'
     expect(page).to have_content '@wayne.com'
     expect(page).to have_content 'Rio de Janeiro - RJ'
-  end
-
-  it 'e não existem galpões cadastrados' do
-    #arrange
-
-    #act
-    visit root_path
-
-    #assert
-    expect(page).to have_content 'Não existem transportadoras cadastradas'
   end
 
 end
