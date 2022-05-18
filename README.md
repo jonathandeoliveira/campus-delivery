@@ -1,10 +1,12 @@
-# README
+#README - Em construção
 
 * Ruby version > ruby "3.0.0"
 
 * Rails version > "rails", "~> 7.0.2", ">= 7.0.2.4"
 
 
+Link do projects com o andamento do projeto 
+https://github.com/users/jonathandeoliveira/projects/1
 
 como eu pensava antes de iniciar o projeto
 ![image](https://user-images.githubusercontent.com/56161566/169111165-42facde2-1e71-4310-8152-170236423d23.png)
