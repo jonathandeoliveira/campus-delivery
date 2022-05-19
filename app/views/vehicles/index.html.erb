@@ -1,14 +1,11 @@
-<h1>Lista de veículos </h1>
-
-<%#=  link_to 'Cadastrar Veículo', new_carro_path %>
-
+<h1> Todos os veículos </h1>
+<%=  link_to 'Cadastrar novo veículo', new_vehicle_path %>
 <% if @vehicles.any?%>
   <% @vehicles.each do |v| %> 
     <div>
       <dl>
-      <dt><strong>Dados do veículo:</strong></dt>
-      <dd><%= v.brand  %> <%= v.model  %> ano: <%= v.year  %></dd>
-      <dd>Placa:<%= v.lincese_plate %> Capacidade de carga:<%= v.weight_capacity %> kg</dd>
+      <dt><strong>Dados do veículo:</strong><%= link_to v.lincese_plate, v %></dt>
+      <dd><strong>Marca: </strong><%= v.brand  %><strong> - Modelo: </strong><%= v.model  %> </dd>
       </dl>
     </div>
   <% end%>

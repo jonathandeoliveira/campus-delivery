@@ -1,0 +1,47 @@
+<h1>Cadastar novo veículo</h1>
+
+<% if(@vehicle.errors.any?) %>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+    <% @vehicle.errors.full_messages.each do |msg| %>
+      <li> <%= msg %> </li>
+      <% end %>
+  </ul>
+<% end %>
+
+
+<%= form_with(model: @vehicle ) do |f| %>
+  <div>
+  <%= f.label :lincese_plate %>
+  <%= f.text_field :lincese_plate %>
+  </div>
+
+  <div>
+  <%= f.label :brand %>
+  <%= f.text_field :brand %>
+  </div>
+
+  <div>
+  <%= f.label :model %>
+  <%= f.text_field :model %>
+  </div>
+
+  <div>
+  <%= f.label :year %>
+  <%= f.text_field :year %>
+  </div>
+
+  <div>
+  <%= f.label :weight_capacity %>
+  <%= f.text_field :weight_capacity %>
+  </div>
+
+  <div>
+  <%= f.label :carrier_id %>
+  <%= f.collection_select :carrier_id, @carriers, :id, :brand_name %>
+  </div>
+
+  <div>
+  <%= f.submit 'Cadastrar' %>
+  </div>
+<% end %>

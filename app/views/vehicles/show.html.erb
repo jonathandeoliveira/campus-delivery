@@ -1,0 +1,9 @@
+  <div>
+        <dl>
+        <dt><h2>Dados do veículo:<h2></dt>
+        <dd><strong>Marca:</strong> <%= @vehicle.brand  %><strong> - Modelo: </strong><%= @vehicle.model  %><strong> - ano:</strong> <%= @vehicle.year  %></dd>
+        <dd><strong>Placa:</strong><%= @vehicle.lincese_plate %><strong> - Capacidade de carga:</strong><%= @vehicle.weight_capacity %><strong> kg</strong></dd>
+        <dd><strong>Pertence a transportadora:</strong> <%= @vehicle.carrier.brand_name %></dd>
+        </dl>
+  </div>
+<%= link_to('Voltar', vehicles_path)%> <br/>

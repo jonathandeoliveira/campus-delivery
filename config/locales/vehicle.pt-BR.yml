@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models: 
+      vehicle: 'Veículo' # coloque aqui o nome do seu model
+    attributes: 
+      vehicle: #coloque aqui o model novamente
+        lincese_plate: 'Placa'
+        brand: 'Marca'
+        model: 'Modelo'
+        year: 'Ano'
+        weight_capacity: 'Capacidade de carga'
+        carrier_id: 'Transportadora'
+        carrier: 'Transportadora'
