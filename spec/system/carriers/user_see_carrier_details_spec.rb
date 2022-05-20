@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Usuário vê detalhes de uma transportadora' do
   it 'e vê informações adicionais a partir da tela inicial' do
     #arrange
-    Carrier.create(brand_name:'Wayne Express', 
+    Carrier.create!(brand_name:'Wayne Express', 
                   company_name:'Wayne Enterprises Inc', 
                   email_domain:'@wayne.com',
                   company_register:'70.190.836/0001-81', 

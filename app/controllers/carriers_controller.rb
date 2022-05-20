@@ -22,6 +22,20 @@ class CarriersController < ApplicationController
     end
   end
 
+  def edit
+    @carrier = Carrier.find(params[:id])
+  end
+
+  def update
+    @carrier = Carrier.find(params[:id])
+    if  @carrier.update(carrier_params)
+      return redirect_to carrier_path(@carrier.id), notice:'Transportadora atualizada com sucesso'
+    else 
+      flash.now[:notice] = 'Não foi possível atualizar a transportadora'
+      render 'edit'
+    end
+  end
+
   private
 
   def carrier_params
