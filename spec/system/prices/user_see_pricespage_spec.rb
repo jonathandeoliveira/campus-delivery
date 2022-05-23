@@ -11,7 +11,7 @@ describe 'vê as tabelas de preços das transportadoras' do
                                 state: 'DF' ,
                                 adress:'Edifício Sede dos Correios',
                                 status:1)
-      user = User.create!(email:'jonathan@email.com', password: 'password', carrier_id: carrier )
+      user = User.create!(email:'jonathan@email.com', password: 'password', carrier: carrier )
       #act
       login_as(user)
       visit root_path
@@ -30,7 +30,7 @@ describe 'vê as tabelas de preços das transportadoras' do
                       state: 'DF' ,
                       adress:'Edifício Sede dos Correios',
                       status:1)
-      user = User.create!(email:'jonathan@email.com', password: 'password', carrier_id: carrier)
+      user = User.create!(email:'jonathan@email.com', password: 'password', carrier: carrier)
       Price.create(size_min:0.1, size_max:0.5,
                   weight_min:0.1, weight_max:5,
                   km_value:0.35,carrier:carrier)
@@ -63,7 +63,7 @@ describe 'vê as tabelas de preços das transportadoras' do
                                   state: 'DF' ,
                                   adress:'Edifício Sede dos Correios',
                                   status:1)
-      user = User.create!(email:'jonathan@email.com', password: 'password', carrier_id: carrier)
+      user = User.create!(email:'jonathan@email.com', password: 'password', carrier: carrier)
       #act
       login_as(user)
       visit root_path

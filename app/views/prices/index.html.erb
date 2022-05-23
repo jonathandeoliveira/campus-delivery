@@ -15,9 +15,9 @@
         <tbody>
           <% @prices.each do |price| %>
             <tr>
-            <td> <%= price.size_min %> a <%= price.size_max %> m³</td>
-            <td> <%= price.weight_min %> a <%= price.weight_max %> Kg</td>
-            <td> Por R$<%= price.km_value %> </td>
+            <td> <%= "%.2f" % price.size_min %> a <%= "%.2f" % price.size_max %> m³</td>
+            <td> <%= "%.2f" % price.weight_min %> a <%= "%.2f" % price.weight_max %> Kg</td>
+            <td> Por <%= number_to_currency(price.km_value) %> </td>
             <td> Na transportadora:<%= link_to price.carrier.brand_name, carrier_path(price.carrier_id) %> </td>
            </tr>
           <% end %>

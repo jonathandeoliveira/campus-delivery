@@ -8,4 +8,7 @@ class Carrier < ApplicationRecord
   { with: /\A\d{2}\.\d{3}\.\d{3}\/000[1-2]-\d{2}\z/}
   has_many :vehicles
   has_many :prices
+  has_many :users
+  has_many :admins
+  has_many :deadlines
 end
