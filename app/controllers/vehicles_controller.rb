@@ -1,6 +1,7 @@
 class VehiclesController < ApplicationController
   def index
-    @vehicles = Vehicle.all
+    @carrier = Carrier.find(params[:carrier_id])
+    @vehicles = @carrier.vehicles
   end
 
   def new
@@ -21,6 +22,7 @@ class VehiclesController < ApplicationController
   end
 
   def show
+    @carrier = Carrier.find(params[:id])
     @vehicle = Vehicle.find(params[:id])
   end
 

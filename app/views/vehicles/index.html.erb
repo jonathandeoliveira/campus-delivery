@@ -1,14 +1,18 @@
-<h1> Todos os veículos </h1>
+<h1> Veiculos de <%= @carrier.brand_name %> </h1>
 <%=  link_to 'Cadastrar novo veículo', new_vehicle_path %>
 <% if @vehicles.any?%>
+  <dt><h2>Dados dos veículos:<h2></dt>
   <% @vehicles.each do |v| %> 
     <div>
-      <dl>
-      <dt><strong>Dados do veículo:</strong><%= link_to v.lincese_plate, v %></dt>
-      <dd><strong>Marca: </strong><%= v.brand  %><strong> - Modelo: </strong><%= v.model  %> </dd>
+        <dl>
+        <dd><strong>Marca:</strong> <%= v.brand  %><strong> - Modelo: </strong><%= v.model  %><strong> - ano:</strong> <%= v.year  %></dd>
+        <dd><strong>Placa:</strong><%= v.lincese_plate %><strong> - Capacidade de carga:</strong><%= v.weight_capacity %><strong> kg</strong></dd>
+        </dl>
+  </div>
       </dl>
     </div>
   <% end%>
 <% else %>
   <p>Não existem veículos cadastrados.</p>
 <% end %>
+<%= link_to('Voltar',  carriers_path(@carrier))%> <br/>

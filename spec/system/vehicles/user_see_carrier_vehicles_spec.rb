@@ -17,7 +17,7 @@ describe 'Usuário vê veículos cadastrados' do
     click_on 'LexCorp'
     click_on 'Ver veículos cadastrados'
     #assert
-    expect(current_path).to eq vehicles_path
+    expect(current_path).to eq carrier_vehicles_path(carrier)
   end
 
   it 'e não existem veículos cadastrados' do
@@ -36,7 +36,7 @@ describe 'Usuário vê veículos cadastrados' do
     click_on 'LexCorp'
     click_on 'Ver veículos cadastrados'
     #assert
-    expect(current_path).to eq vehicles_path
+    expect(current_path).to eq carrier_vehicles_path(carrier)
     expect(page).to have_content 'Não existem veículos cadastrados'
   end
 
