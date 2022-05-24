@@ -29,7 +29,7 @@ describe 'Usuário cadastra uma transporadora' do
     fill_in 'Endereço', with:  'Av. Portugal, 1148'
     fill_in 'Cidade', with: 'Goiânia'
     fill_in 'Estado', with: 'GO'
-    fill_in 'Domínio de E-mail', with: '@lexcorp.com'
+    fill_in 'Domínio de E-mail', with: 'lexcorp.com'
     click_on 'Cadastrar'
     #assert
     expect(current_path).to eq carriers_path

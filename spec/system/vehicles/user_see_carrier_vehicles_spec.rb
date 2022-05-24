@@ -5,13 +5,15 @@ describe 'Usuário vê veículos cadastrados' do
     #arrange
     carrier = Carrier.create!(brand_name:'LexCorp', 
                               company_name:'LexCorp Incorporated', 
-                              email_domain:'@lexcorp.com',
+                              email_domain:'lexcorp.com',
                               company_register:'85.732.736/0001-07', 
                               city:'Goiânia',
                               state: 'GO' ,
                               adress:'Av. Portugal, 1148',
                               status:1)
+    user = User.create!(email: 'luthor@lexcorp.com', password:'password', carrier:  carrier)
     #act
+    login_as(user)
     visit root_path
     click_on 'Lista de Transportadoras'
     click_on 'LexCorp'
@@ -24,13 +26,15 @@ describe 'Usuário vê veículos cadastrados' do
     #arrange
     carrier = Carrier.create!(brand_name:'LexCorp', 
                               company_name:'LexCorp Incorporated', 
-                              email_domain:'@lexcorp.com',
+                              email_domain:'lexcorp.com',
                               company_register:'85.732.736/0001-07', 
                               city:'Goiânia',
                               state: 'GO' ,
                               adress:'Av. Portugal, 1148',
                               status:1)
+    user = User.create!(email: 'luthor@lexcorp.com', password:'password', carrier:  carrier)
     #act
+    login_as(user)
     visit root_path
     click_on 'Lista de Transportadoras'
     click_on 'LexCorp'
@@ -44,7 +48,7 @@ describe 'Usuário vê veículos cadastrados' do
     #arrange
     carrier = Carrier.create!(brand_name:'LexCorp', 
                               company_name:'LexCorp Incorporated', 
-                              email_domain:'@lexcorp.com',
+                              email_domain:'lexcorp.com',
                               company_register:'85.732.736/0001-07', 
                               city:'Goiânia',
                               state: 'GO' ,
@@ -64,7 +68,9 @@ describe 'Usuário vê veículos cadastrados' do
                       year:2004,
                       weight_capacity:3200,
                       carrier:carrier)
+    user = User.create!(email: 'luthor@lexcorp.com', password:'password', carrier:  carrier)
     #act
+    login_as(user)
     visit root_path
     click_on 'Lista de Transportadoras'
     click_on 'LexCorp'

@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models: 
+      price: 'Preço' # coloque aqui o nome do seu model
+    attributes: 
+      price: #coloque aqui o model novamente
+        size_min: 'Tamanho mínimo' #a partir daqui coloque os atributos do model
+        size_max: 'Tamanho máximo'
+        weight_min: 'Peso mínimo'
+        weight_max: 'Peso máximo'
+        km_value: 'Valor por quilômetro'
+        carrier_id: 'Transportadora'
+

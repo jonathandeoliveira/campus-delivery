@@ -12,6 +12,38 @@
     <dd><%= @carrier.email_domain %> <br/></dd>
 </dl>
 
+<section id = 'deadlines'>
+  <h2>Prazos para entrega:</h2>
+  <div>
+   
+  </div>
+<% if @deadlines.any?%>
+    <table>
+      <thead>
+        <tr>
+          <th> Intervalos de distância: | </th>
+          <th> Tempo estimado para entrega: | </th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @deadlines.each do |deadline| %>
+            <tr>
+            <td> | <%= deadline.km_min %> a <%= deadline.km_max %> Km | <%= deadline.km_time%> Dia(s) </td>
+          <% end %>
+          </tr>
+        <tbody>
+      </table>
+<% else %>
+  <p> Não existem prazos cadastrados.</p>
+<% end %>
+
+</section>
+
+
+<div>
+ <%= link_to 'Cadastrar novo prazo', new_carrier_deadline_path(@carrier) %> <br/>
+ <%= link_to 'Cadastrar novo preço', new_carrier_price_path(@carrier) %>
+</div>
 <div>
 <%= link_to 'Ver veículos cadastrados', carrier_vehicles_path(@carrier) %> <br/>
 <%= link_to 'Voltar', carriers_path %> | <%= link_to 'Editar', edit_carrier_path %>

@@ -1,24 +1,21 @@
 <section id = 'prices'>
   <h2>Tabelas de preços:</h2>
-  <div>
-    <%#= link_to('Cadastrar novo preço', novo_preço_path) %>
-  </div>
 <% if @prices.any?%>
     <table>
       <thead>
         <tr>
-          <th> Intervalos de tamanho:</th>
-          <th> Intervalos de peso:</th>
-          <th> Valor por KM:</th>
+          <th> Intervalos de tamanho: | </th>
+          <th> Intervalos de peso: | </th>
+          <th> Valor por KM: | </th>
         </tr>
         </thead>
         <tbody>
           <% @prices.each do |price| %>
             <tr>
-            <td> <%= "%.2f" % price.size_min %> a <%= "%.2f" % price.size_max %> m³</td>
-            <td> <%= "%.2f" % price.weight_min %> a <%= "%.2f" % price.weight_max %> Kg</td>
-            <td> Por <%= number_to_currency(price.km_value) %> </td>
-            <td> Na transportadora:<%= link_to price.carrier.brand_name, carrier_path(price.carrier_id) %> </td>
+            <td> | <%= "%.2f" % price.size_min %> a <%= "%.2f" % price.size_max %> m³ | </td>
+            <td> | <%= "%.2f" % price.weight_min %> a <%= "%.2f" % price.weight_max %> Kg | </td>
+            <td> | <%= number_to_currency(price.km_value)%></td>
+            <td> Na transportadora: <%= link_to price.carrier.brand_name, carrier_path(price.carrier_id) %> </td>
            </tr>
           <% end %>
         <tbody>

@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models: 
+      deadline: 'Preço' # coloque aqui o nome do seu model
+    attributes: 
+      deadline: #coloque aqui o model novamente
+        km_min: 'Distância mínima' #a partir daqui coloque os atributos do model
+        km_max: 'Distância máxima'
+        km_time: 'Prazo para a distância'
+        carrier_id: 'Transportadora'
+

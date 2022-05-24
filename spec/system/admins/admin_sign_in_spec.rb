@@ -3,7 +3,12 @@ require 'rails_helper'
 describe 'Usuário faz o login' do
   it 'com sucesso' do
     #arrange
-    Admin.create!(email:'email@email.com',password: 'password' )
+    carrier = Carrier.create!(company_name:' Stark Logistics Inc', 
+                              company_register:'00.178.762/0001-82',
+                              brand_name:'Stark Logistics', adress:'Rua Vilela, 663',
+                              city:'Tatuapé', state:'SP', 
+                              email_domain:'@tstark.com', status: 1)
+    Admin.create!(email:'email@email.com',password: 'password', carrier:carrier )
     #act
     visit root_path
     click_on 'Trabalha conosco? Clique aqui'
@@ -25,7 +30,12 @@ describe 'Usuário faz o login' do
 
   it 'e faz logout' do
     #arrange
-    Admin.create!(email:'email@email.com',password: 'password' )
+    carrier = Carrier.create!(company_name:' Stark Logistics Inc', 
+                              company_register:'00.178.762/0001-82',
+                              brand_name:'Stark Logistics', adress:'Rua Vilela, 663',
+                              city:'Tatuapé', state:'SP', 
+                              email_domain:'@tstark.com', status: 1)
+    Admin.create!(email:'email@email.com',password: 'password', carrier:carrier )
     #act
     visit root_path
     click_on 'Trabalha conosco? Clique aqui'

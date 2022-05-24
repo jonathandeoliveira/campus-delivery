@@ -1,7 +1,8 @@
 class VehiclesController < ApplicationController
+  before_action :authenticate_user!
   def index
-    @carrier = Carrier.find(params[:carrier_id])
-    @vehicles = @carrier.vehicles
+    @carrier = current_user.carrier
+    @vehicles = current_user.carrier.vehicles
   end
 
   def new
@@ -10,10 +11,11 @@ class VehiclesController < ApplicationController
   end
 
   def create
-    @vehicles = Vehicle.all
+   
     @vehicle= Vehicle.new(vehicle_params)
     if @vehicle.save
-      redirect_to @vehicle, notice: 'Veículo cadastrado com sucesso'
+      carrier = @vehicle.carrier_id
+      redirect_to carrier_vehicles_path(carrier), notice: 'Veículo cadastrado com sucesso'
     else
       @carriers = Carrier.all
       flash.now[:notice] = 'Não foi possível cadastrar o veículo'

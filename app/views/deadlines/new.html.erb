@@ -1,0 +1,27 @@
+<h1>Cadastrar novo prazo</h1>
+
+<%= form_with model: [@carrier, @deadline], local: true do |f| %>
+  <div>
+  <%= f.label :km_min %>
+  <%= f.number_field :km_min %>
+  </div>
+
+  <div>
+  <%= f.label :km_max %>
+  <%= f.number_field :km_max %>
+  </div>
+
+  <div>
+  <%= f.label :km_time %>
+  <%= f.number_field :km_time %>
+  </div>
+
+  <div>
+  <%= f.label :carrier_id %>
+  <%= f.collection_select :carrier_id, @carriers, :id, :brand_name %>
+  </div>
+
+  <div>
+  <%= f.submit 'Cadastrar' %>
+  </div>
+<% end %>

@@ -10,7 +10,7 @@
 <% end %>
 
 
-<%= form_with(model: @vehicle ) do |f| %>
+<%= form_with model: [@carrier, @vehicle], local: true do |f| %>
   <div>
   <%= f.label :lincese_plate %>
   <%= f.text_field :lincese_plate %>

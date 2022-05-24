@@ -1,7 +1,8 @@
 class CarriersController < ApplicationController
+  before_action :authenticate_user!, only: [:show]
 
   def index
-    @carriers= Carrier.all
+    @carriers = Carrier.all
   end
 
   def new
@@ -9,7 +10,8 @@ class CarriersController < ApplicationController
   end
 
   def show
-    @carrier = Carrier.find(params[:id])
+    @carrier = current_user.carrier
+    @deadlines = current_user.carrier.deadlines
   end
 
   def create

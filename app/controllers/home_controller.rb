@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
 def index
-  @carriers = Carrier.all
+  @carrier = Carrier.all
 end
 
 end
