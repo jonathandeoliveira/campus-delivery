@@ -11,8 +11,8 @@ class CarriersController < ApplicationController
 
   def show
     @carrier = current_user.carrier
-    @deadlines = @carrier.deadlines
-    @prices = @carrier.prices
+    @deadlines = @carrier.deadlines.order(km_time: :asc)
+    @prices = @carrier.prices.order(km_value: :asc)
   end
 
   def create
@@ -38,6 +38,17 @@ class CarriersController < ApplicationController
       render 'edit'
     end
   end
+
+
+  def budget(altura,largura,profundidade,peso,route_km)
+    volume = altura * largura * profundidade
+    @prices = Price.where('size_min < ? and  size_max > ?', volume,volume )
+    final_price = @prices.each do |b|
+      b.km_value * route_km
+    end
+
+  end
+
 
   private
 

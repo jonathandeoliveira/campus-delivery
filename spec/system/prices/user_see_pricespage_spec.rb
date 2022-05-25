@@ -1,26 +1,32 @@
 require 'rails_helper'
 
 describe 'vê as tabelas de preços das transportadoras' do
-    it 'logado, a partir da página principal' do
+    it 'Administrador logado, a partir da página principal' do
       #arrange
-      carrier = Carrier.create!(brand_name:'Correios', 
-                                company_name:'Correios do Brasil', 
-                                email_domain:'correios.com',
-                                company_register:'02.284.551/0001-50', 
-                                city:'Brasília',
-                                state: 'DF' ,
-                                adress:'Edifício Sede dos Correios',
+      carrier = Carrier.create!(brand_name:'Ruby Delivery', 
+                                company_name:'Ruby nos trilhos SA', 
+                                email_domain:'admin.com',
+                                company_register:'03.274.321/0001-26', 
+                                city:'Santo André',
+                                state: 'SP' ,
+                                adress:'Av Industrial, 600',
                                 status:1)
-      user = User.create!(email:'jonathan@correios.com', password: 'password', carrier: carrier )
+      admin = Admin.create!(email:'jonathan@admin.com', password: 'password', carrier: carrier )
       #act
-      login_as(user)
       visit root_path
+      click_on 'Trabalha conosco? Clique aqui'
+      fill_in 'E-mail', with: 'jonathan@admin.com'
+      fill_in 'Senha', with: 'password'
+      within('form') do
+      click_on 'Entrar'
+      end
       click_on 'Tabelas de preços'
       #assert
+      expect(current_path).to eq prices_path
       expect(page).to have_content 'Tabelas de preços:'
     end
 
-    it 'com sucesso' do
+    it 'usário comum, com sucesso e a partir da página principal' do
       #arrange
       carrier = Carrier.create!(brand_name:'Correios', 
                       company_name:'Correios do Brasil', 
@@ -41,7 +47,8 @@ describe 'vê as tabelas de preços das transportadoras' do
       #act
       login_as(user)
       visit root_path
-      click_on 'Tabelas de preços'
+      click_on 'Lista de Transportadoras'
+      click_on 'Correios'
       #assert
       expect(page).to have_content 'Intervalos de tamanho:'
       expect(page).to have_content '0.10 a 0.50 m³'
@@ -67,7 +74,8 @@ describe 'vê as tabelas de preços das transportadoras' do
       #act
       login_as(user)
       visit root_path
-      click_on 'Tabelas de preços'
+      click_on 'Lista de Transportadoras'
+      click_on 'Correios'
       #assert
       expect(page).to have_content 'Não existem tabelas de preços cadastradas.'
     end

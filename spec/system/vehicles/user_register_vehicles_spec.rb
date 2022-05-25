@@ -58,7 +58,6 @@ describe 'Usuário cadastra um veiculo' do
     fill_in 'Modelo', with: 'XF105 FTT'
     fill_in 'Ano', with: '2017'
     fill_in 'Capacidade de carga', with: '4700'
-    select 'Stark Logistics', from: 'Transportadora'
     click_on 'Cadastrar'
     #assert
     expect(page).to have_content 'Veículo cadastrado com sucesso'

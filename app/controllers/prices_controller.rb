@@ -1,5 +1,7 @@
 class PricesController < ApplicationController
-  before_action :authenticate_user! 
+  before_action :authenticate_user! , only: [:new, :create]
+  before_action :authenticate_admin! , only: [:index]
+
   def index
     @prices = Price.all.order(km_value: :asc)
   end

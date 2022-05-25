@@ -14,7 +14,7 @@ class VehiclesController < ApplicationController
     @vehicle= Vehicle.new(vehicle_params)
     @vehicle.carrier = current_user.carrier
     if @vehicle.save
-      redirect_to current_user.carrier, notice: 'Veículo cadastrado com sucesso'
+      redirect_to carrier_vehicles_path(current_user), notice: 'Veículo cadastrado com sucesso'
     else
       @carriers = Carrier.all
       flash.now[:notice] = 'Não foi possível cadastrar o veículo'

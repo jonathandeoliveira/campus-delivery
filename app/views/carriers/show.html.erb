@@ -22,21 +22,48 @@
       <thead>
         <tr>
           <th> Intervalos de distância: | </th>
-          <th> Tempo estimado para entrega: | </th>
+          <th> Tempo estimado para entrega: | </th> 
+               <th> Intervalos de tamanho: | </th>
+          <th> Intervalos de peso: | </th>
+          <th> Valor por KM: | </th>
         </tr>
         </thead>
         <tbody>
           <% @deadlines.each do |deadline| %>
             <tr>
-            <td> | <%= deadline.km_min %> a <%= deadline.km_max %> Km | <%= deadline.km_time%> Dia(s) </td>
+            <td> | <%= deadline.km_min %> a <%= deadline.km_max %> Km | <%= deadline.km_time%> Dia(s) </td> 
           <% end %>
           </tr>
         <tbody>
       </table>
 <% else %>
-  <p> Não existem prazos cadastrados.</p>
-<% end %>
+  <p> Não existem tabelas de prazos cadastradas.</p>
+  <% end %>
+</section>
 
+<section id = 'prices'>
+  <h2>Tabelas de preços:</h2>
+<% if @prices.any?%>
+    <table>
+      <thead>
+        <tr>
+          <th> Intervalos de tamanho: | </th>
+          <th> Intervalos de peso: | </th>
+          <th> Valor por KM: | </th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @prices.each do |price| %>
+            <tr>
+            <td> | <%= "%.2f" % price.size_min %> a <%= "%.2f" % price.size_max %> m³ | </td>
+            <td> | <%= "%.2f" % price.weight_min %> a <%= "%.2f" % price.weight_max %> Kg | </td>
+            <td> | <%= number_to_currency(price.km_value)%></td>
+          <% end %>
+        <tbody>
+      </table>
+<% else %>
+  <p> Não existem tabelas de preços cadastradas.</p>
+<% end %>
 </section>
 
 
