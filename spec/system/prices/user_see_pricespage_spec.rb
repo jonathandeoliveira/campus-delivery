@@ -1,31 +1,6 @@
 require 'rails_helper'
 
 describe 'vê as tabelas de preços das transportadoras' do
-    it 'Administrador logado, a partir da página principal' do
-      #arrange
-      carrier = Carrier.create!(brand_name:'Ruby Delivery', 
-                                company_name:'Ruby nos trilhos SA', 
-                                email_domain:'admin.com',
-                                company_register:'03.274.321/0001-26', 
-                                city:'Santo André',
-                                state: 'SP' ,
-                                adress:'Av Industrial, 600',
-                                status:1)
-      admin = Admin.create!(email:'jonathan@admin.com', password: 'password', carrier: carrier )
-      #act
-      visit root_path
-      click_on 'Trabalha conosco? Clique aqui'
-      fill_in 'E-mail', with: 'jonathan@admin.com'
-      fill_in 'Senha', with: 'password'
-      within('form') do
-      click_on 'Entrar'
-      end
-      click_on 'Tabelas de preços'
-      #assert
-      expect(current_path).to eq prices_path
-      expect(page).to have_content 'Tabelas de preços:'
-    end
-
     it 'usário comum, com sucesso e a partir da página principal' do
       #arrange
       carrier = Carrier.create!(brand_name:'Correios', 

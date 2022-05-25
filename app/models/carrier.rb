@@ -11,4 +11,15 @@ class Carrier < ApplicationRecord
   has_many :users
   has_many :admins
   has_many :deadlines
+
+  #cálculo de volume e preço da entrega
+  def budget(altura,largura,profundidade,peso,route_km)
+    volume = altura * largura * profundidade
+    @prices = Price.where('size_min < ? and  size_max > ?', volume,volume )
+    final_price = @prices.each do |b|
+      b.km_value * route_km
+    end
+  end
+
+
 end

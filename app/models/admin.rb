@@ -3,5 +3,5 @@ class Admin < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  belongs_to :carrier
+  validates :email, format: {with: /\A^[\w-].+@admin.com\z/}
 end
