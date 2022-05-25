@@ -1,34 +1,29 @@
 <h1>Cadastrar novo preço</h1>
-
 <%= form_with model: [@carrier, @price], local: true do |f| %>
   <div>
+  
   <%= f.label :size_min %>
-  <%= f.number_field :size_min %>
+  <%= f.number_field :size_min, step: 0.1 %>
   </div>
 
   <div>
   <%= f.label :size_max %>
-  <%= f.number_field :size_max %>
+  <%= f.number_field :size_max, step: 0.1 %>
   </div>
 
   <div>
   <%= f.label :weight_min %>
-  <%= f.number_field :weight_min %>
+  <%= f.number_field :weight_min, step: 0.1 %>
   </div>
 
   <div>
   <%= f.label :weight_max %>
-  <%= f.number_field :weight_max %>
+  <%= f.number_field :weight_max, step: 0.1 %>
   </div>
 
   <div>
   <%= f.label :km_value %>
   <%= f.number_field :km_value %>
-  </div>
-
-  <div>
-  <%= f.label :carrier_id %>
-  <%= f.collection_select :carrier_id, @carriers, :id, :brand_name %>
   </div>
 
   <div>

@@ -11,7 +11,8 @@ class CarriersController < ApplicationController
 
   def show
     @carrier = current_user.carrier
-    @deadlines = current_user.carrier.deadlines
+    @deadlines = @carrier.deadlines
+    @prices = @carrier.prices
   end
 
   def create
@@ -25,11 +26,11 @@ class CarriersController < ApplicationController
   end
 
   def edit
-    @carrier = Carrier.find(params[:id])
+    @carrier = current_user.carrier
   end
 
   def update
-    @carrier = Carrier.find(params[:id])
+    @carrier = current_user.carrier
     if  @carrier.update(carrier_params)
       return redirect_to carrier_path(@carrier.id), notice:'Transportadora atualizada com sucesso'
     else 

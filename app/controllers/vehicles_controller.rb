@@ -11,11 +11,10 @@ class VehiclesController < ApplicationController
   end
 
   def create
-   
     @vehicle= Vehicle.new(vehicle_params)
+    @vehicle.carrier = current_user.carrier
     if @vehicle.save
-      carrier = @vehicle.carrier_id
-      redirect_to carrier_vehicles_path(carrier), notice: 'Veículo cadastrado com sucesso'
+      redirect_to current_user.carrier, notice: 'Veículo cadastrado com sucesso'
     else
       @carriers = Carrier.all
       flash.now[:notice] = 'Não foi possível cadastrar o veículo'
@@ -31,6 +30,6 @@ class VehiclesController < ApplicationController
   private
 
   def vehicle_params
-    params.require(:vehicle).permit(:lincese_plate, :brand, :model, :year, :weight_capacity, :carrier_id)
+    params.require(:vehicle).permit(:lincese_plate, :brand, :model, :year, :weight_capacity)
   end
 end
