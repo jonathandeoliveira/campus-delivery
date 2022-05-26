@@ -1,8 +1,5 @@
 <section id = 'carriers'>
   <h2>Transportadoras:</h2>
-    <div>
-      <%= link_to('Cadastrar Transportadora', new_carrier_path) %>
-    </div>
     <% if @carriers.any?%>
       <% @carriers.each do |c| %> 
         <div>

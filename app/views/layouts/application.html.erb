@@ -22,7 +22,9 @@
           <%= link_to 'Entrar',  new_user_session_path %> |
         <% end %>
         <% if admin_signed_in? %>
-          <%= link_to 'Tabelas de preços', prices_path %>|
+          <%= link_to 'Tabelas de preços', prices_path %> |
+          <%= link_to('Cadastrar Transportadora', new_carrier_path)%> |
+          <%= link_to 'Consultar orçamento', budget_carriers_path %> |
           <%= current_admin.email %>
           <%= button_to 'Sair', destroy_admin_session_path, method: :delete %>
         <% else %>

@@ -3,8 +3,15 @@ require 'rails_helper'
 describe 'Usuário cadastra uma transporadora' do
   it 'a partir da tela inicial' do
     #arrange
+    admin = Admin.create!(email:'jonathan@admin.com', password: 'password' )
     #act
     visit root_path
+    click_on 'Trabalha conosco? Clique aqui'
+    within('form') do
+    fill_in 'E-mail', with: 'jonathan@admin.com'
+    fill_in 'Senha', with: 'password'
+    click_on 'Entrar'
+    end
     click_on 'Lista de Transportadoras'
     click_on 'Cadastrar Transportadora'
     #assert
@@ -19,7 +26,15 @@ describe 'Usuário cadastra uma transporadora' do
 
   it 'com sucesso' do
     #arrange
+    admin = Admin.create!(email:'jonathan@admin.com', password: 'password' )
+    #act
     visit root_path
+    click_on 'Trabalha conosco? Clique aqui'
+    within('form') do
+    fill_in 'E-mail', with: 'jonathan@admin.com'
+    fill_in 'Senha', with: 'password'
+    click_on 'Entrar'
+    end
     click_on 'Lista de Transportadoras'
     click_on 'Cadastrar Transportadora'
     #act
@@ -39,11 +54,16 @@ describe 'Usuário cadastra uma transporadora' do
   end
 
   it 'Com dados incompletos e fora do formato' do
-    #arrange
-
+     #arrange
+  admin = Admin.create!(email:'jonathan@admin.com', password: 'password' )
     #act
     visit root_path
-    click_on 'Lista de Transportadoras'
+    click_on 'Trabalha conosco? Clique aqui'
+    within('form') do
+    fill_in 'E-mail', with: 'jonathan@admin.com'
+    fill_in 'Senha', with: 'password'
+    click_on 'Entrar'
+    end
     click_on 'Cadastrar Transportadora'
     fill_in 'Razão Social', with: ''
     fill_in 'CPNJ', with: ''
