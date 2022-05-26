@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :vehicles, only: [:index, :show]
     resources :prices, only: [:new, :create]
     resources :deadlines, only: [:new, :create]
-    get 'budget', on: :collection
   end
 
+  resources :orders, only: [:index, :new, :create]
 end

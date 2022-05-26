@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Usuário consulta preços' do
-  xit 'a partir da página principal' do
+  it 'a partir da página principal' do
     #arrange
     admin = Admin.create!(email:'larissa@admin.com', password: 'password' )
     carrier = Carrier.create!(company_name:' Stark Logistics Inc', 

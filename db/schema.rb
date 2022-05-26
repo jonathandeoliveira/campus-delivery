@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_25_212109) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_26_151650) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -44,6 +44,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_212109) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["carrier_id"], name: "index_deadlines_on_carrier_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "carrier_id", null: false
+    t.integer "vehicle_id", null: false
+    t.float "size"
+    t.float "weight"
+    t.string "customar_name"
+    t.string "customer_adress"
+    t.string "derparture_adress"
+    t.integer "distance"
+    t.string "track_number"
+    t.integer "status", default: 10
+    t.string "product_number"
+    t.decimal "total_price"
+    t.date "delivery_deadline"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["carrier_id"], name: "index_orders_on_carrier_id"
+    t.index ["vehicle_id"], name: "index_orders_on_vehicle_id"
   end
 
   create_table "prices", force: :cascade do |t|
@@ -85,6 +105,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_212109) do
   end
 
   add_foreign_key "deadlines", "carriers"
+  add_foreign_key "orders", "carriers"
+  add_foreign_key "orders", "vehicles"
   add_foreign_key "prices", "carriers"
   add_foreign_key "vehicles", "carriers"
 end

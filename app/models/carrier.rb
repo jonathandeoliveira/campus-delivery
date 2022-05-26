@@ -11,6 +11,7 @@ class Carrier < ApplicationRecord
   has_many :users
   has_many :admins
   has_many :deadlines
+  has_many :orders
 
   #cálculo de volume e preço da entrega
   def budget(altura,largura,profundidade,peso,route_km)

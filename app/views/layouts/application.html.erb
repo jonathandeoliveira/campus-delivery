@@ -14,7 +14,7 @@
       <h1> CC-Delivery </h1>
       <nav>
         <%= link_to 'Página Principal', root_path %> | 
-        
+        <%= link_to 'Ordens de serviço', orders_path %> |
         <% if user_signed_in? %>
           <%= current_user.email %>
           <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
@@ -24,7 +24,6 @@
         <% if admin_signed_in? %>
           <%= link_to 'Tabelas de preços', prices_path %> |
           <%= link_to('Cadastrar Transportadora', new_carrier_path)%> |
-          <%= link_to 'Consultar orçamento', budget_carriers_path %> |
           <%= current_admin.email %>
           <%= button_to 'Sair', destroy_admin_session_path, method: :delete %>
         <% else %>

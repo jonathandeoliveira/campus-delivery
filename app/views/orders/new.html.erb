@@ -1,0 +1,48 @@
+<h1> Criar ordem de serviço </h1>
+
+<%= form_with(model: @order ) do |f| %>
+
+  <div>
+  <%= f.label :carrier_id, 'Transportadora' %>:
+  <%= f.collection_select :carrier_id, @carriers, :id, :brand_name %>
+  </div>
+
+  <div>
+  <%= f.label :customar_name, 'Nome do cliente' %>:
+  <%= f.text_field :customar_name %>
+  </div>
+
+  <div>
+  <%= f.label :derparture_adress, 'Endereço de retirada' %>:
+  <%= f.text_field :derparture_adress %>
+  </div>
+
+  <div>
+  <%= f.label :customer_adress, 'Endereço de entrega' %>:
+  <%= f.text_field :customer_adress %>
+  </div>
+
+  <div>
+  <%= f.label :distance, 'Distância' %>:
+  <%= f.number_field :distance %>
+  </div>
+
+  <div>
+  <%= f.label :weight,'Peso' %>:
+  <%= f.number_field :weight, step: 0.1 %>
+  </div>
+
+  <div>
+  <%= f.label :size, 'Tamanho' %>:
+  <%= f.number_field :size, step: 0.1 %>
+  </div>
+
+  <div>
+  <%= f.label :product_number, 'Código do produto' %>:
+  <%= f.text_field :product_number %>
+  </div>
+
+  <div>
+  <%= f.submit 'Cadastrar' %>
+  </div>
+<% end%>

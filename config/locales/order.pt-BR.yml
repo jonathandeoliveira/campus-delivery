@@ -1,0 +1,21 @@
+pt-BR:
+  activerecord:
+    models: 
+      order: 'Pedido' # coloque aqui o nome do seu model
+    attributes: 
+      order: #coloque aqui o model novamente
+        size: 'Tamanho' #a partir daqui coloque os atributos do model
+        weight: 'Peso'
+        customar_name: 'Nome do cliente'
+        customer_adress: 'Endereço do entrega'
+        derparture_adress: 'Endereço de retirada'
+        distance: 'Distância'
+        track_number: 'Código de rastreio'
+        product_number: 'Código do produto'
+        total_price: 'Valor total'
+        delivery_deadline: 'Prazo de entrega'
+        carrier_id: 'Transportadora'
+        carrier: 'Transportadora'
+        vehicle_id: 'Veículo'
+        vehicle: 'Veículo'
+
