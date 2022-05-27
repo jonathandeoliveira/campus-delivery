@@ -1,0 +1,105 @@
+<section id = 'pending orders'>
+<% if @order.pending? %>
+  <h2>Ordem de serviço pendente: <%= @order.track_number %></h2>
+  <div>
+    <dl>
+        <dt> <strong> Nome do cliente: </strong> </dt>
+        <dd> <%= @order.customar_name  %>  </dd>
+        <dt> <strong> Código do produto: </strong> </dt>
+        <dd> <%= @order.product_number  %>  </dd>
+        <dt> <strong> Endereço de retirada: </strong> </dt>
+        <dd> <%= @order.derparture_adress  %>  </dd>
+        <dt> <strong> Endereço de entrega: </strong> </dt>
+        <dd> <%= @order.customer_adress  %>  </dd>
+        <dt> <strong> Distância: </strong> </dt>
+        <dd> <%= @order.distance  %> Km   </dd>
+        <dt> <strong> Peso: </strong> </dt>
+        <dd> <%= @order.weight  %> Kg </dd>
+        <dt> <strong> Prazo de entrega: </strong> </dt>
+        <dd> <%= @order.delivery_deadline  %>  Dia(s) </dd>
+        <dt> <strong> Valor da entrega: </strong> </dt>
+        <dd> <%=  number_to_currency(@order.total_price)  %> </dd>
+        <dt> <strong> Código de rastreio: </strong> </dt>
+        <dd> <%= @order.track_number  %></dd>
+        <dt> <strong> Status: <strong> </dt>
+        <dd> <%= @order.status %> </dd>
+    </dl>
+  </div>  
+  <div>
+    <%= form_with(model:@order) do |f| %>
+      <%= f.label :vehicle_id %>
+      <%= f.collection_select :vehicle_id, @order.carrier.vehicles, :id, :full_description %>
+      <%= f.submit 'Selecionar veículo' %>
+    <% end%>
+  </div>  
+  <p> Deseja aceitar a ordem de serviço? </p>
+  <%= button_to "Aceitar", accept_order_path, {method: 'patch'} %> <br/> 
+  <%= button_to "Recusar",  deny_order_path, {method: 'patch'} %>
+<% end%>
+</section>
+
+<section id = 'Actual orders'>
+<% if @order.accepted? || @order.in_transit? %>
+  <h2>Ordens de serviço atuais: <%= @order.track_number %></h2>
+  <dl>
+      <dt> <strong> Nome do cliente: </strong> </dt>
+      <dd>  <%= @order.customar_name  %>  </dd>
+      <dt><strong> Código do produto: </strong> </dt>
+      <dd> <%= @order.product_number  %>  </dd>
+      <dt><strong> Endereço de retirada: </strong> </dt>
+      <dd> <%= @order.derparture_adress  %>  </dd>
+      <dt> <strong> Endereço de entrega: </strong> </dt>
+      <dd> <%= @order.customer_adress  %>  </dd>
+      <dt> <strong> Distância: </strong> </dt>
+      <dd> <%= @order.distance  %> Km   </dd>
+      <dt> <strong> Peso: </strong> </dt>
+      <dd> <%= @order.weight  %> Kg </dd>
+      <dt> <strong> Prazo de entrega: </strong> </dt>
+      <dd> <%= @order.delivery_deadline  %>  Dia(s) </dd>
+      <dt> <strong> Veículo designado: </strong> </dt>
+      <dd> <%= @order.vehicle.full_description %>  </dd>
+      <dt> <strong> Valor da entrega: </strong> </dt>
+      <dd> <%=  number_to_currency(@order.total_price)  %> </dd>
+      <dt> <strong> Código de rastreio: </strong> </dt>
+      <dd> <%= @order.track_number  %></dd>
+      <dt> <strong> Status: <strong> </dt>
+      <dd> <%= @order.status %> </dd>
+  </dl>
+  <p> Atualizar ordem de serviço </p>
+  <% if @order.accepted? %>
+    <%= button_to "Em transito", in_transit_order_path, {method: 'patch'} %>
+  <% elsif @order.in_transit? %>
+    <%= button_to "Entregue", delivered_order_path, {method: 'patch'} %>
+  <% end %>
+<% end%>
+</section>
+
+<section id = 'Finished Orders'>
+<% if @order.delivered?%>
+  <h2>Ordem de serviço entregue: <%= @order.track_number %></h2>
+  <dl>
+      <dt> <strong> Nome do cliente: </strong> </dt>
+      <dd> <%= @order.customar_name  %>  </dd>
+      <dt><strong> Código do produto: </strong> </dt>
+      <dd> <%= @order.product_number  %>  </dd>
+      <dt><strong> Endereço de retirada: </strong> </dt>
+      <dd> <%= @order.derparture_adress  %>  </dd>
+      <dt> <strong> Endereço de entrega: </strong> </dt>
+      <dd> <%= @order.customer_adress  %>  </dd>
+      <dt> <strong> Distância: </strong> </dt>
+      <dd> <%= @order.distance  %> Km   </dd>
+      <dt> <strong> Peso: </strong> </dt>
+      <dd> <%= @order.weight  %> Kg </dd>
+      <dt> <strong> Prazo de entrega: </strong> </dt>
+      <dd> <%= @order.delivery_deadline  %>  Dia(s) </dd>
+      <dt> <strong> Veículo designado: </strong> </dt>
+      <dd> <%= @order.vehicle.full_description %>  </dd>
+      <dt> <strong> Valor da entrega: </strong> </dt>
+      <dd> <%=  number_to_currency(@order.total_price)  %> </dd>
+      <dt> <strong> Código de rastreio: </strong> </dt>
+      <dd> <%= @order.track_number  %></dd>
+      <dt> <strong> Status: <strong> </dt>
+      <dd> <%= @order.status %> </dd>
+  </dl>
+<% end%>
+</section>

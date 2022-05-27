@@ -151,4 +151,10 @@ RSpec.describe Carrier, type: :model do
     end
 
   end # fecha describe
+
+  describe '#Enum' do
+   xit '' do
+    end
+  end
+
 end 

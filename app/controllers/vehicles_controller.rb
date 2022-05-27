@@ -1,8 +1,15 @@
 class VehiclesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :autenticate
   def index
+    if user_signed_in?
     @carrier = current_user.carrier
-    @vehicles = current_user.carrier.vehicles
+    @vehicles = @carrier.vehicles
+
+    elsif admin_signed_in?
+    @carrier = Carrier.find(params[:carrier_id])
+    @vehicles = @carrier.vehicles
+    end
+    
   end
 
   def new

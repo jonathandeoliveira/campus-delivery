@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_26_151650) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_26_223111) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -48,7 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_151650) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "carrier_id", null: false
-    t.integer "vehicle_id", null: false
+    t.integer "vehicle_id"
     t.float "size"
     t.float "weight"
     t.string "customar_name"

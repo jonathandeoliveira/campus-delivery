@@ -1,6 +1,6 @@
 class CarriersController < ApplicationController
   before_action :autenticate, only: [:show]
-
+  before_action :acess_validation, only: [:show]
   def index
     @carriers = Carrier.all
   end
@@ -10,9 +10,10 @@ class CarriersController < ApplicationController
   end
 
   def show
-    @carrier = current_user.carrier
+    @carrier = Carrier.find(params[:id])
     @deadlines = @carrier.deadlines.order(km_time: :asc)
     @prices = @carrier.prices.order(km_value: :asc)
+    @order = @carrier.orders
   end
 
   def create
@@ -37,10 +38,6 @@ class CarriersController < ApplicationController
       flash.now[:notice] = 'Não foi possível atualizar a transportadora'
       render 'edit'
     end
-  end
-
-  def budget 
-    
   end
 
 

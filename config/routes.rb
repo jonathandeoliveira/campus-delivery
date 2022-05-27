@@ -10,7 +10,13 @@ Rails.application.routes.draw do
     resources :vehicles, only: [:index, :show]
     resources :prices, only: [:new, :create]
     resources :deadlines, only: [:new, :create]
+    resources :orders, only:[:show]
   end
 
-  resources :orders, only: [:index, :new, :create]
+  resources :orders, only: [:index, :new, :create,:update] do
+    patch 'deny', on: :member
+    patch 'accept', on: :member
+    patch 'in_transit', on: :member
+    patch 'delivered', on: :member
+  end
 end

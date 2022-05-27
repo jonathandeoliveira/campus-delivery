@@ -1,7 +1,16 @@
-<h1> Detalhes sobre a transportadora: <%= @carrier.brand_name %> </h1>
-<h2> Razão social: <%= @carrier.company_name  %> </h2>
+<div>
+ <%= link_to 'Cadastrar novo prazo', new_carrier_deadline_path(@carrier) %> | 
+ <%= link_to 'Cadastrar novo preço', new_carrier_price_path(@carrier) %> | 
+</div>
+<div>
+<%= link_to 'Ver ordens de serviço', orders_path %>  | 
+<%= link_to 'Ver veículos cadastrados', carrier_vehicles_path(@carrier) %> | 
+</div>
 
+<h3> Detalhes sobre a transportadora: <%= @carrier.brand_name %> </h3>
+<h4> Razão social: <%= @carrier.company_name  %> </h4>
 <dl>
+
   <dt><strong>CPNJ:</strong></dt>
     <dd><%= @carrier.company_register %><br/></dd>
 
@@ -23,15 +32,13 @@
         <tr>
           <th> Intervalos de distância: | </th>
           <th> Tempo estimado para entrega: | </th> 
-               <th> Intervalos de tamanho: | </th>
-          <th> Intervalos de peso: | </th>
-          <th> Valor por KM: | </th>
         </tr>
         </thead>
         <tbody>
           <% @deadlines.each do |deadline| %>
             <tr>
-            <td> | <%= deadline.km_min %> a <%= deadline.km_max %> Km | <%= deadline.km_time%> Dia(s) </td> 
+            <td> | <%= deadline.km_min %> a <%= deadline.km_max %> Km | </td>
+            <td> | <%= deadline.km_time%> Dia(s) | </td> 
           <% end %>
           </tr>
         <tbody>
@@ -57,7 +64,7 @@
             <tr>
             <td> | <%= "%.2f" % price.size_min %> a <%= "%.2f" % price.size_max %> m³ | </td>
             <td> | <%= "%.2f" % price.weight_min %> a <%= "%.2f" % price.weight_max %> Kg | </td>
-            <td> | <%= number_to_currency(price.km_value)%></td>
+            <td> | <%= number_to_currency(price.km_value)%> | </td>
           <% end %>
         <tbody>
       </table>
@@ -67,11 +74,27 @@
 </section>
 
 
-<div>
- <%= link_to 'Cadastrar novo prazo', new_carrier_deadline_path(@carrier) %> <br/>
- <%= link_to 'Cadastrar novo preço', new_carrier_price_path(@carrier) %>
-</div>
-<div>
-<%= link_to 'Ver veículos cadastrados', carrier_vehicles_path(@carrier) %> <br/>
-<%= link_to 'Voltar', carriers_path %> | <%= link_to 'Editar', edit_carrier_path %>
-</div>
+<section id = 'orders'>
+<h3>Ordens de serviço pendentes:</h3>
+<% if @carrier.orders.pending.any?%>
+    <table>
+      <thead>
+        <tr>
+          <th>  Código:  </th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @carrier.orders.pending.each do |order| %>
+            <tr>
+            <td>  <%= link_to order.track_number, carrier_order_path(order.carrier, order)  %>  </td>
+          <% end %>
+        <tbody>
+      </table>
+<% else %>
+  <p> Não existem tabelas ordens de serviço pendentes.</p>
+<% end %>
+</section>
+<br/>
+<br/>
+<%= link_to 'Voltar', carriers_path %> | <%= link_to 'Editar transportadora', edit_carrier_path %>
+

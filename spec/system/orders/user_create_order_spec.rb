@@ -4,7 +4,9 @@ describe 'Usuário cria ordem de serviço' do
   it 'acessando a página, a partir do menu' do
     #arrange
    
+    admin = Admin.create!(email:'jonathan@admin.com', password: 'password' )
     #act
+    login_as admin, scope: :admin
     visit root_path
     click_on 'Ordens de serviço'
     click_on 'Criar ordem de serviço'
@@ -35,7 +37,15 @@ describe 'Usuário cria ordem de serviço' do
                                   city:'Tatuapé', state:'SP', 
                                   email_domain:'stark.com', status: 1)
 
+    price = Price.create(size_min:0.6, size_max:1,
+                        weight_min:0.1, weight_max:5,
+                        km_value:0.75,carrier:carrier2)
+
+    deadline = Deadline.create!(km_min:0, km_max:80, km_time:1, carrier:carrier2)
+
+    admin = Admin.create!(email:'jonathan@admin.com', password: 'password' )
     #act
+    login_as admin, scope: :admin
     visit root_path
     click_on 'Ordens de serviço'
     click_on 'Criar ordem de serviço'
@@ -49,7 +59,7 @@ describe 'Usuário cria ordem de serviço' do
     fill_in 'Código do produto' , with: 'F0N3D30UV1D0'
     click_on 'Cadastrar'
     #assert
-    expect(page).to have content 'Pedido registrado com sucesso'
+    expect(page).to have_content 'Pedido registrado com sucesso'
   end
 
 end

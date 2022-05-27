@@ -8,6 +8,10 @@ class User < ApplicationRecord
 
   before_validation :user_domain
 
+  def acess_carrier?(carrier)
+    self.carrier == carrier
+  end
+
   private 
   def user_domain
     domain = self.email.split('@')[1]

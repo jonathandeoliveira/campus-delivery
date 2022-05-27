@@ -1,20 +1,25 @@
 <h1>Lista de ordens de serviço:</h1>
+<% if admin_signed_in? %>
   <div>
     <%= link_to 'Criar ordem de serviço', new_order_path %>
   </div>
+<% end %>
+
 <% if @orders.any?%>
     <table>
       <thead>
         <tr>
-          <th>Código de rastreio</th>
-          <th> Transportadora</th>
+          <th>Código de rastreio: </th>
+          <th> Transportadora: </th>
+          <th> Status: </th>
         </tr>
         </thead>
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-            <td> <%= link_to order.track_number, order  %></td>
+            <td> <%= link_to order.track_number, carrier_order_path(order.carrier, order)  %></td>
             <td> <%= order.carrier.brand_name %> 
+            <td> <%= order.status %> 
            </tr>
           <% end %>
         <tbody>
@@ -23,4 +28,6 @@
   <p> Não existem ordens de serviço cadastrados.</p>
 <% end %>
 
-
+<% if user_signed_in? %>
+<%= link_to 'Voltar', carrier_path(current_user.carrier)  %>
+<% end %>

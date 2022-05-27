@@ -3,42 +3,42 @@
 <%= form_with(model: @order ) do |f| %>
 
   <div>
-  <%= f.label :carrier_id, 'Transportadora' %>:
+  <%= f.label :carrier_id %>:
   <%= f.collection_select :carrier_id, @carriers, :id, :brand_name %>
   </div>
 
   <div>
-  <%= f.label :customar_name, 'Nome do cliente' %>:
+  <%= f.label :customar_name  %>:
   <%= f.text_field :customar_name %>
   </div>
 
   <div>
-  <%= f.label :derparture_adress, 'Endereço de retirada' %>:
+  <%= f.label :derparture_adress %>:
   <%= f.text_field :derparture_adress %>
   </div>
 
   <div>
-  <%= f.label :customer_adress, 'Endereço de entrega' %>:
+  <%= f.label :customer_adress %>:
   <%= f.text_field :customer_adress %>
   </div>
 
   <div>
-  <%= f.label :distance, 'Distância' %>:
+  <%= f.label :distance %>:
   <%= f.number_field :distance %>
   </div>
 
   <div>
-  <%= f.label :weight,'Peso' %>:
+  <%= f.label :weight %>:
   <%= f.number_field :weight, step: 0.1 %>
   </div>
 
   <div>
-  <%= f.label :size, 'Tamanho' %>:
+  <%= f.label :size %>:
   <%= f.number_field :size, step: 0.1 %>
   </div>
 
   <div>
-  <%= f.label :product_number, 'Código do produto' %>:
+  <%= f.label :product_number %>:
   <%= f.text_field :product_number %>
   </div>
 

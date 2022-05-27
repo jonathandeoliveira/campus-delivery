@@ -32,7 +32,7 @@ describe 'Usuário vê veículos cadastrados' do
                               state: 'GO' ,
                               adress:'Av. Portugal, 1148',
                               status:1)
-    user = User.create!(email: 'luthor@lexcorp.com', password:'password', carrier:  carrier)
+    user = User.create!(email: 'luthor@lexcorp.com', password:'password', carrier: carrier)
     #act
     login_as(user)
     visit root_path

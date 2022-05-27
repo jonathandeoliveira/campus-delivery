@@ -170,5 +170,12 @@ RSpec.describe Vehicle, type: :model do
       #assert
       expect(result).to eq false
     end
-  end #describe
+  end #describe1
+
+  describe '#Enum' do
+    xit '' do
+    end
+  end
+
+
 end #rpec

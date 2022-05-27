@@ -43,7 +43,32 @@ describe 'Usuário cadastra um prazo' do
     expect(page).to have_field 'Distância mínima'
     expect(page).to have_field 'Distância máxima'
     expect(page).to have_field 'Prazo para a distância'
-    expect(page).to have_field 'Transportadora'
+    #expect(page).to have_field 'Transportadora'
+  end
+
+  it 'com sucesso' do
+    #arrange
+    carrier = Carrier.create!(brand_name:'Correios', 
+                                company_name:'Correios do Brasil', 
+                                email_domain:'correios.com',
+                                company_register:'02.284.551/0001-50', 
+                                city:'Brasília',
+                                state: 'DF' ,
+                                adress:'Edifício Sede dos Correios',
+                                status:1)
+    user = User.create!(email:'robson@correios.com', password: 'password', carrier:carrier )
+    #act
+    login_as(user)
+    visit root_path
+    click_on 'Lista de Transportadoras'
+    click_on 'Correios'
+    click_on 'Cadastrar novo prazo'
+    fill_in 'Distância mínima', with: '0'
+    fill_in 'Distância máxima', with: '50'
+    fill_in 'Prazo para a distância', with: '2'
+    click_on 'Cadastrar'
+    #assert
+
   end
 
 end

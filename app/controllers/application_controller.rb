@@ -8,6 +8,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:carrier])
   end
 
+  def acess_validation
+    return if admin_signed_in?
+    @carrier = Carrier.find(params[:id])
+    redirect_to root_path, notice: 'Erro! Página não encontrada :(' unless current_user.acess_carrier?(@carrier)
+  end
+
+
   def autenticate
     if user_signed_in?
       :authenticate_user!
