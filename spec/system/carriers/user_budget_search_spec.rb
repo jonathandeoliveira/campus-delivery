@@ -14,7 +14,7 @@ describe 'Usuário consulta preços' do
                   km_value:0.35,carrier:carrier)
     deadline = Deadline.create!(km_min:0, km_max:80, km_time:1, carrier:carrier)
     #act
-    login_as(admin)
+    login_as admin, scope: :admin
     click_on 'Consultar orçamento'
     #assert
     expect(current_path).to eq budget_carriers_path

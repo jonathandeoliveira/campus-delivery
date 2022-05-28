@@ -6,6 +6,6 @@ class Vehicle < ApplicationRecord
   validates :weight_capacity, numericality: { greater_than: 0 }
 
   def full_description
-    "#{brand} - #{model} - #{year} - Capacidade de carga: #{weight_capacity}Kg"
+    "#{brand}/#{model}/#{year}- Placa:#{lincese_plate} - Capacidade de carga: #{weight_capacity}Kg"
   end
 end

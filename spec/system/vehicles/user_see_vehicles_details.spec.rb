@@ -5,7 +5,7 @@ describe 'Usuário vê detalhes do veículo' do
     #arrange
     carrier = Carrier.create!(brand_name:'LexCorp', 
                               company_name:'LexCorp Incorporated', 
-                              email_domain:'@lexcorp.com',
+                              email_domain:'lexcorp.com',
                               company_register:'85.732.736/0001-07', 
                               city:'Goiânia',
                               state: 'GO' ,
@@ -40,7 +40,7 @@ describe 'Usuário vê detalhes do veículo' do
     #arrange
     carrier = Carrier.create!(brand_name:'LexCorp', 
                               company_name:'LexCorp Incorporated', 
-                              email_domain:'@lexcorp.com',
+                              email_domain:'lexcorp.com',
                               company_register:'85.732.736/0001-07', 
                               city:'Goiânia',
                               state: 'GO' ,

@@ -17,9 +17,14 @@ class OrdersController < ApplicationController
 
  
   def create
+    @carriers = Carrier.all
     @order = Order.new(order_params)
-    @order.save
-    redirect_to carrier_order_path(@order.carrier, @order) , notice: 'Pedido registrado com sucesso'
+    if @order.save == true
+      redirect_to carrier_order_path(@order.carrier, @order) , notice: 'Pedido registrado com sucesso'
+    else 
+      flash.now[:notice] = 'Não foi possível criar a ordem de serviço'
+      render 'new'
+    end
   end
 
   def show

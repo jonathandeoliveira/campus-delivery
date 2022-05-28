@@ -84,7 +84,7 @@ describe 'Transportador aceita uma ordem de serviço' do
     click_on 'Lista de Transportadoras'
     click_on 'Stranding Logistics'
     click_on 'KINZECARACTERES'
-    select 'Yamaha - Fazer 250 - 2020 - Capacidade de carga: 100Kg', from: 'Veículo'
+    select 'Yamaha/Fazer 250/2020- Placa:KDS-1342 - Capacidade de carga: 100Kg', from: 'Veículo'
     click_on 'Selecionar veículo'
     click_on 'Aceitar'
     #assert

@@ -10,10 +10,10 @@ class DeadlinesController < ApplicationController
   def create
     @deadline = Deadline.new(deadline_params)
     @deadline.carrier = current_user.carrier
-    if @deadline.save!
+    if @deadline.save
       redirect_to carrier_path(current_user), notice: 'Prazo de entrega cadastrado com sucesso'
     else
-      @carriers = Carrier.anll
+      @carrier = current_user.carrier
       flash.now[:notice] = 'Não foi possível cadastrar o prazo de entrega'
       render 'new'
     end

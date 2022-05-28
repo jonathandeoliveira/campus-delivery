@@ -18,4 +18,8 @@ pt-BR:
         carrier: 'Transportadora'
         vehicle_id: 'Veículo'
         vehicle: 'Veículo'
-
+        denied: 'Recusada'
+        pending: 'Pendente'
+        accepted: 'Aceita'
+        in_transit: 'Em trânsito'
+        delivered: 'Entregue'

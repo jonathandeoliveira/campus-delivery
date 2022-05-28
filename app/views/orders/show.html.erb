@@ -40,7 +40,7 @@
 
 <section id = 'Actual orders'>
 <% if @order.accepted? || @order.in_transit? %>
-  <h2>Ordens de serviço atuais: <%= @order.track_number %></h2>
+  <h2>Ordens de serviço: <%= @order.track_number %></h2>
   <dl>
       <dt> <strong> Nome do cliente: </strong> </dt>
       <dd>  <%= @order.customar_name  %>  </dd>
@@ -76,7 +76,7 @@
 
 <section id = 'Finished Orders'>
 <% if @order.delivered?%>
-  <h2>Ordem de serviço entregue: <%= @order.track_number %></h2>
+  <h2>Ordem de serviço: <%= @order.track_number %></h2>
   <dl>
       <dt> <strong> Nome do cliente: </strong> </dt>
       <dd> <%= @order.customar_name  %>  </dd>

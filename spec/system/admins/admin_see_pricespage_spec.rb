@@ -5,7 +5,8 @@ describe 'Administrador vê tabela de preços' do
     #arrange
     admin = Admin.create!(email:'jonathan@admin.com', password: 'password' )
     #act
-    login(admin)
+    login_as admin, scope: :admin
+    visit root_path
     click_on 'Tabelas de preços'
     #assert
     expect(current_path).to eq prices_path
