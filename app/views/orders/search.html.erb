@@ -1,0 +1,56 @@
+<h2>Resultado da busca por: <%= @code %> </h2>
+
+<% if @order.present? %>
+  <dt> <strong> Nome do cliente: </strong> </dt>
+  <dd> <%= @order.customar_name  %>  </dd>
+  <dt><strong> Código do produto: </strong> </dt>
+  <dd> <%= @order.product_number  %>  </dd>
+  <dt> <strong> Endereço de entrega: </strong> </dt>
+  <dd> <%= @order.customer_adress  %>  </dd>
+   <dt> <strong> Transportadora: </strong> </dt>
+  <dd> <%= @order.carrier.brand_name  %>  </dd>
+  <dt> <strong> Prazo de entrega: </strong> </dt>
+  <dd> <%= @order.delivery_deadline  %>  Dia(s) úteis </dd>
+  <dt> <strong> Valor do frete: </strong> </dt>
+  <dd> <%=  number_to_currency(@order.total_price)  %> </dd>
+  <dt> <strong> Código de rastreio: </strong> </dt>
+  <dd> <%= @order.track_number  %></dd>
+
+<section id = 'delivery updates'>
+  <p><strong> Situação da entrega: </strong></p>
+    <%if @delivery_update.present? %>
+      <table>
+        <thead>
+        <tr>
+          <th> | Local: |</th>
+          <th> | Descrição: |</th>
+          <th> | Horário de atualização: | </th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @delivery_update.each do |update| %>
+            <tr>
+            <td> | <%= update.coord_position %> | </td>
+            <td> | <%= update.delivery_description %> | </td>
+            <td> | <%= I18n.l update.created_at, format: :long %> | </td>
+          </tr>
+          <% end %>
+        <tbody>
+      </table>
+    <% else%>
+    </p> Não existem atualizações de entrega para este pedido.</p>
+    <% end %>
+</section>
+<%else%>
+    <p> Não foi encontrado nenhum pedido com este código </p>
+<% end %>
+
+
+<section id = 'query'>
+  <h4>Novo rastreio:</h4>
+    <%=form_with(url: search_orders_path, method: :get) do |f| %>
+    <%= f.label :query, 'Código de rastreio' %>:
+    <%= f.text_field :query%>
+    <%= f.submit 'Buscar' %>
+    <% end%>
+</section>

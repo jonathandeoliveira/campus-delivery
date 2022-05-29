@@ -2,6 +2,7 @@ class Order < ApplicationRecord
   enum status: {denied:0, pending:10, accepted:20, in_transit:30, delivered:40}
   belongs_to :carrier
   belongs_to :vehicle, optional: true
+  has_many :delivery_updates
 
   validates :vehicle_id, presence: true, unless: :enum_validation
   validates :status, :size, :weight, :customar_name, :customer_adress,:distance,:track_number, :product_number,:delivery_deadline, presence: true

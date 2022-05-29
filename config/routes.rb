@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :prices, only: [:new, :create]
     resources :deadlines, only: [:new, :create]
     resources :orders, only:[:show]
+    patch 'activate', on: :member
+    patch 'desactivate', on: :member
   end
 
   resources :orders, only: [:index, :new, :create,:update] do
@@ -18,5 +20,10 @@ Rails.application.routes.draw do
     patch 'accept', on: :member
     patch 'in_transit', on: :member
     patch 'delivered', on: :member
+    resources :delivery_updates, only: [:show, :create]
+    get 'search', on: :collection
   end
+
+ 
+
 end

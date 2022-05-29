@@ -22,7 +22,7 @@
         <dt> <strong> Código de rastreio: </strong> </dt>
         <dd> <%= @order.track_number  %></dd>
         <dt> <strong> Status: <strong> </dt>
-        <dd> <%= @order.status %> </dd>
+        <dd> <%= Order.human_attribute_name(@order.status) %> </dd>
     </dl>
   </div>  
   <div>
@@ -63,7 +63,7 @@
       <dt> <strong> Código de rastreio: </strong> </dt>
       <dd> <%= @order.track_number  %></dd>
       <dt> <strong> Status: <strong> </dt>
-      <dd> <%= @order.status %> </dd>
+      <dd> <%= Order.human_attribute_name(@order.status) %> </dd>
   </dl>
   <p> Atualizar ordem de serviço </p>
   <% if @order.accepted? %>
@@ -99,7 +99,67 @@
       <dt> <strong> Código de rastreio: </strong> </dt>
       <dd> <%= @order.track_number  %></dd>
       <dt> <strong> Status: <strong> </dt>
-      <dd> <%= @order.status %> </dd>
+      <dd> <%= Order.human_attribute_name(@order.status) %> </dd>
   </dl>
 <% end%>
 </section>
+
+
+<% if(@delivery_update.errors.any?) %>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+    <% @delivery_update.errors.full_messages.each do |msg| %>
+      <li> <%= msg %> </li>
+      <% end %>
+  </ul>
+<% end %>
+
+<section id = 'delivery updates'>
+  <p> Situação da entrega:</p>
+    <%if @delivery_updates.present? %>
+      <table>
+        <thead>
+        <tr>
+          <th> | Local: |</th>
+          <th> | Descrição: |</th>
+          <th> | Horário de atualização: | </th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @delivery_updates.each do |update| %>
+            <tr>
+            <td> | <%= update.coord_position %> | </td>
+            <td> | <%= update.delivery_description %> | </td>
+            <td> | <%= I18n.l update.created_at, format: :long %> | </td>
+          </tr>
+          <% end %>
+        <tbody>
+      </table>
+    <% else%>
+    </p> Não existem atualizações de entrega para este pedido.</p>
+    <% end %>
+</section>
+
+<section id = 'route updates'>
+<% if @order.pending? == false && @order.delivered? == false %>
+  <p> Atualizar status de entrega: </p>
+
+  <%= form_with(model: [@order, @delivery_update]) do |f| %>
+    <div>
+      <%= f.label :coord_position %>:
+      <%= f.text_field :coord_position %>
+    </div>
+    <div>
+      <%= f.label :delivery_description %>:
+      <%= f.text_field :delivery_description %>
+    </div>
+    <div>
+
+    </div>
+    <%= f.submit 'Atualizar' %>
+  <% end%>
+
+<% end %>
+</section>
+
+

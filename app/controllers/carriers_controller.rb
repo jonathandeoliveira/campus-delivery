@@ -40,6 +40,18 @@ class CarriersController < ApplicationController
     end
   end
 
+  def activate
+    @carrier =  Carrier.find(params[:id])
+    @carrier.active!
+    redirect_to carriers_path, notice: 'Transportadora ativada com sucesso'
+  end
+
+  def desactivate
+    @carrier =  Carrier.find(params[:id])
+    @carrier.desactive!
+    redirect_to carriers_path, notice: 'Transportadora ativada com sucesso'
+  end
+
 
   private
 

@@ -28,7 +28,9 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @delivery_update = DeliveryUpdate.new
     @order = Order.find(params[:id])
+    @delivery_updates = @order.delivery_updates
   end
 
   def update
@@ -66,6 +68,16 @@ class OrdersController < ApplicationController
     redirect_to carrier_order_path(@order.id), notice: 'Ordem atualizada com sucesso'
   end
 
+  def search
+    @code = params["query"]
+    @order = Order.find_by(track_number:@code)
+    if @order.present?
+      @delivery_update = @order.delivery_updates
+    end
+  end
+
+
+
 private
   def order_params
     params.require(:order).permit(:carrier_id, :vehicle_id, 
@@ -86,8 +98,6 @@ def budget(altura,largura,profundidade,peso,route_km)
     b.km_value * route_km
   end
 end
-
-
 
 
 end

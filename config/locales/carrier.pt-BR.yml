@@ -11,3 +11,6 @@ pt-BR:
         city: 'Cidade'
         state: 'Estado'
         email_domain: 'Domínio de E-mail'
+        status: 'Situação'
+        active: 'Ativa'
+        desactive: 'Inativa'

@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord:
+    models: 
+      delivery_update: 'Atualizar status de entrega' # coloque aqui o nome do seu model
+    attributes: 
+      delivery_update: #coloque aqui o model novamente
+        coord_position: 'Local' #a partir daqui coloque os atributos do model
+        delivery_description: 'Descrição'
+        updated_at: 'Atualizado em'
+        order_id: 'Pedido'
+        order: 'Pedido'

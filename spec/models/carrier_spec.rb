@@ -153,8 +153,33 @@ RSpec.describe Carrier, type: :model do
   end # fecha describe
 
   describe '#Enum' do
-   xit '' do
+   it 'Verifica o status ativo (1)' do
+      #Arrange
+      carrier = Carrier.new(company_name:'Wayne Enterprises Inc', 
+                company_register:'70!190-836-0001/81',
+                brand_name:'WayneCorp',adress:'Avenida Almirante Barroso, 81',
+                city:'Rio de Janeiro', state:'RJ',
+                email_domain:'contato@bwayne.com',status:1)
+      #Act
+      result = carrier.status
+      #Assert
+      expect(result).to eq 'active'
     end
+
+    it 'Verifica o status ativo (1)' do
+      #Arrange
+      carrier = Carrier.new(company_name:'Wayne Enterprises Inc', 
+                company_register:'70!190-836-0001/81',
+                brand_name:'WayneCorp',adress:'Avenida Almirante Barroso, 81',
+                city:'Rio de Janeiro', state:'RJ',
+                email_domain:'contato@bwayne.com',status:0)
+      #Act
+      result = carrier.status
+      #Assert
+      expect(result).to eq 'desactive'
+    end
+
+
   end
 
 end 

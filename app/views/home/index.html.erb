@@ -1,6 +1,22 @@
 <section id = 'home'>
   <h2>Olá, Bem vindo à CC-Delivery</h2>
-  <div>
-    <%= link_to('Lista de Transportadoras', carriers_path) %>
-  <div>
+  <% if admin_signed_in? || user_signed_in? %>
+    <div>
+      <%= link_to('Lista de Transportadoras', carriers_path) %>
+    <div>
+  <% end%>
 </section>
+
+
+<section id = 'query'>
+  <h4>Rastreie seu pedido:</h4>
+    <%=form_with(url: search_orders_path, method: :get) do |f| %>
+    <%= f.label :query, 'Código de rastreio' %>:
+    <%= f.text_field :query%>
+    <%= f.submit 'Buscar' %>
+    <% end%>
+</section>
+
+
+
+

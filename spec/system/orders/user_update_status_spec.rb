@@ -46,7 +46,7 @@ describe 'Usuário atualiza status uma ordem de serviço' do
     expect(page).to have_content 'Transportadora:'
     expect(page).to have_content 'LexCorp'
     expect(page).to have_content 'Status'
-    expect(page).to have_content 'accepted'
+    expect(page).to have_content 'Aceita'
   end
 
   it 'vê o detalhes de uma ordem de serviço' do 
@@ -97,7 +97,7 @@ describe 'Usuário atualiza status uma ordem de serviço' do
     expect(page).to have_content 'Endereço de entrega: Rua dos condomínios, Santo André - SP'
     expect(page).to have_content 'Distância: 12 Km'
     expect(page).to have_content 'Peso: 4.0 Kg'
-    expect(page).to have_content 'Status: accepted'
+    expect(page).to have_content 'Status: Aceita'
     expect(page).to have_button 'Em transito'
   end
 
@@ -152,7 +152,7 @@ describe 'Usuário atualiza status uma ordem de serviço' do
     expect(page).to have_content 'Endereço de entrega: Rua dos condomínios, Santo André - SP'
     expect(page).to have_content 'Distância: 12 Km'
     expect(page).to have_content 'Peso: 4.0 Kg'
-    expect(page).to have_content 'Status: in_transit'
+    expect(page).to have_content 'Status: Em trânsito'
   end
 
   it 'Atualiza status para entregue' do 
@@ -206,6 +206,6 @@ describe 'Usuário atualiza status uma ordem de serviço' do
     expect(page).to have_content 'Endereço de entrega: Rua dos condomínios, Santo André - SP'
     expect(page).to have_content 'Distância: 12 Km'
     expect(page).to have_content 'Peso: 4.0 Kg'
-    expect(page).to have_content 'Status: delivered'
+    expect(page).to have_content 'Status: Entregue'
   end
 end

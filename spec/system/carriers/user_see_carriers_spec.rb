@@ -1,15 +1,6 @@
 require 'rails_helper'
 
 describe 'Usuario visita a tela de transportadoras' do
-  it 'e vê o nome da app' do
-    #arrange
-    #act
-    visit root_path
-    click_on 'Lista de Transportadoras'
-    #assert
-    expect(page).to have_content('Entre para acessar sua transportadora.')
-  end
-
   it 'e vê as transportadoras cadastradas' do
     #arrange
     carrier = Carrier.create(brand_name:'Wayne Express', 

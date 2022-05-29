@@ -19,7 +19,7 @@
             <tr>
             <td> <%= link_to order.track_number, carrier_order_path(order.carrier, order)  %></td>
             <td> <%= order.carrier.brand_name %> 
-            <td> <%= order.status %> 
+            <td> <%= Order.human_attribute_name(order.status) %> 
            </tr>
           <% end %>
         <tbody>
