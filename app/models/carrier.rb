@@ -15,4 +15,8 @@ class Carrier < ApplicationRecord
   has_many :orders
 
 
+  def carrier_deadlines(distance)
+    deadlines.where("km_min < #{distance} and km_max > #{distance} ")
+  end
+
 end

@@ -16,27 +16,27 @@
   <h4>Consulta de orçamento: </h4>
    <%= form_with(model: @budget ) do |f| %>
   <div>
-  <%= f.label :height %>
+  <%= f.label :height %><font size="2px"> (metros) </font>
   <%= f.text_field :height %>
   </div>
 
   <div>
-  <%= f.label :width %>
+  <%= f.label :width %><font size="2px"> (metros) </font>
   <%= f.text_field :width %>
   </div>
 
   <div>
-  <%= f.label :length %>
+  <%= f.label :length %><font size="2px"> (metros) </font>
   <%= f.text_field :length %>
   </div>
 
   <div>
-  <%= f.label :weight %>
+  <%= f.label :weight %><font size="2px"> (Kg) </font>
   <%= f.text_field :weight %>
   </div>
 
   <div>
-  <%= f.label :distance %>
+  <%= f.label :distance %><font size="2px"> (Km) </font>
   <%= f.text_field :distance %>
   </div>
 
@@ -45,3 +45,35 @@
   </div>
 <% end %>
 </section>
+
+<% if @budget_history.any?%>
+<h2> Orçamentos anteriores:  </h2>
+  <table>
+    <thead>
+    <tr>
+      <th> | Altura: |</th>
+      <th> | Largura: |</th>
+      <th> | Comprimento: | </th>
+      <th> | Peso: | </th>
+      <th> | Distância: | </th>
+      <th> | Pesquisado em: | </th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @budget_history.each do |budget| %>
+        <tr>
+          <td> | <%= budget.height %> m | </td>
+          <td> | <%= budget.width %> m | </td>
+          <td> | <%= budget.length %> m | </td>
+          <td> | <%= budget.weight %> Kg | </td>
+          <td> | <%= budget.distance %> Km | </td>
+          <td> | <%= I18n.l budget.created_at, format: :long %> | </td>
+          <td> <%=  link_to 'Ver valores' ,budget %> </td>
+        </tr>
+      <% end %>
+    <tbody>
+  </table>
+<% else%>
+</p> Não há orçamentos anteriores.<p>
+<% end %>

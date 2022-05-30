@@ -1,6 +1,7 @@
 class BudgetsController < ApplicationController
 
   def index
+    @budget_history = Budget.all
     @budget = Budget.new
   end
 
@@ -15,7 +16,12 @@ class BudgetsController < ApplicationController
   end
 
   def show
+    if search_result.present?
     @search_result = search_result
+    @query.query_result = @search_result
+    else
+    @query.query_result = ['Não foi encontrado nenhum orçamento para estes dados']
+    end
   end
 
 
@@ -28,19 +34,17 @@ class BudgetsController < ApplicationController
   #cálculo de volume e preço da entrega
   def search_result
     @query = Budget.find(params[:id])
-    @size = @query.height * @query.width * @query.length
-    @weight = @query.weight
-    prices = Price.where('size_min < ? and  size_max > ?', @size,@size ).where('weight_min < ? and  weight_max > ?', @weight,@weight )
+    size = @query.volum_calculator
+    weight = @query.weight
+    distance = @query.distance
+    prices = Price.search(size,weight)
     carrier_prices = prices.map do |b|
       carrier = b.carrier
-      deadline = carrier_deadline(carrier,@query.distance)
+      deadline = carrier.carrier_deadlines(distance)
       final_price = b.km_value * @query.distance
       {carrier: carrier, final_price: final_price, deadline: deadline}
     end
   end
 
-  def carrier_deadline(carrier,distance)
-    carrier.deadlines.where("km_min < #{distance} and km_max > #{distance} ")
-  end
-    
+
 end
