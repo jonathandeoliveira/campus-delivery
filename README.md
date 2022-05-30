@@ -2,18 +2,18 @@
 
 
 <img  src="https://badgen.net/badge/Ruby/Versão%203.0/red?icon=ruby">
-<img  src= "https://img.shields.io/static/v1?label=Rails&message=Versão%207.0&color=red&logo=rubyonrails&logoWidth=20">
+<img  src= "https://img.shields.io/static/v1?label=Rails&message=Versão%207.0&color=red&logo=rubyonrails">
 <img  src=https://img.shields.io/badge/Status-Em%20desenvolvimento-brightgreen> 
 
 
 ### Tabela de Conteúdos 🗺️:
-  🔹	[Descrição do projeto](#descrição-do-projeto)
-  🔹	[Funcionalidades](#funcionalidades)
-  🔹	[Gems utilizadas](#gems-utilizadas)
-  🔹	[Como instalar a aplicação](#como-instalar-a-aplicação)
-  🔹	[Configurando o banco de dados](#configurando-o-banco-de-dados)
-   🔹	[Layout da aplicação](#layout-da-aplicação)
-  🔹	[Ideias para implementações futuras](#ideias-para-implementações-futuras)
+  🔹	[Descrição do projeto](#descrição-do-projeto) </br>
+  🔹	[Funcionalidades](#funcionalidades) </br>
+  🔹	[Gems utilizadas](#gems-utilizadas) </br>
+  🔹	[Como instalar a aplicação](#como-instalar-a-aplicação)</br>
+  🔹	[Configurando o banco de dados](#configurando-o-banco-de-dados)</br>
+   🔹	[Layout da aplicação](#layout-da-aplicação)</br>
+  🔹	[Ideias para implementações futuras](#ideias-para-implementações-futuras)</br>
 
 #### <p align="justify"> Descrição do projeto </p>
 O projeto consiste da criação de uma aplicação web responsável por gerenciar meios de transporte disponíveis para e-commerces.
