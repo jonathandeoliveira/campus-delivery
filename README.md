@@ -2,7 +2,7 @@
 
 
 <img  src="https://badgen.net/badge/Ruby/Versão%203.0/red?icon=ruby">
-<img  src= "https://img.shields.io/static/v1?label=Rails&message=Versão%207.0&color=red&logo=rubyonrails">
+<img  src= "app/assets/images/v1.svg">
 <img  src=https://img.shields.io/badge/Status-Em%20desenvolvimento-brightgreen> 
 
 
@@ -22,7 +22,7 @@ O projeto consiste da criação de uma aplicação web responsável por gerencia
 #### <p align="justify"> Funcionalidades </p>
 
 - [X] Administradores da plataforma podem cadastrar transportadoras, bem como classificá-las como ativas ou inativas para buscas ou orçamentos futuros
-- [X] Administradores podem consultar valores de frete de suas transportadoras.
+- [x] Administradores podem consultar valores de frete de suas transportadoras.
 - [X] Transporadoras podem cadastrar usuários vinculadas e ela
 - [X] Usuários só podem visualizar sua transportadora na plataforma
 - [x] Usuários podem cadastrar veículos, prazos e valores de frete
