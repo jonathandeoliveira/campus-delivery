@@ -24,6 +24,6 @@ Rails.application.routes.draw do
     get 'search', on: :collection
   end
 
- 
+  resources :budgets, only:[:index, :create, :show] 
 
 end

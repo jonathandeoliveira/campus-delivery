@@ -1,0 +1,13 @@
+pt-BR:
+  activerecord:
+    models: 
+      budget: 'Orçamento' # coloque aqui o nome do seu model
+    attributes: 
+      budget: #coloque aqui o model novamente
+        height: 'Altura' #a partir daqui coloque os atributos do model
+        width: 'Largura'
+        length: 'Comprimento'
+        weight: 'Peso'
+        distance: 'Distância'
+        query_result: 'Resultados da busca'
+

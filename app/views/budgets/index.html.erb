@@ -1,0 +1,47 @@
+<h1>Consulta de orçamento:</h1>
+
+
+<% if(@budget.errors.any?) %>
+  <p>Verifique os erros abaixo:</p>
+  <ul>
+    <% @budget.errors.full_messages.each do |msg| %>
+      <li> <%= msg %> </li>
+      <% end %>
+  </ul>
+<% end %>
+
+
+
+<section id = 'budget query'>
+  <h4>Consulta de orçamento: </h4>
+   <%= form_with(model: @budget ) do |f| %>
+  <div>
+  <%= f.label :height %>
+  <%= f.text_field :height %>
+  </div>
+
+  <div>
+  <%= f.label :width %>
+  <%= f.text_field :width %>
+  </div>
+
+  <div>
+  <%= f.label :length %>
+  <%= f.text_field :length %>
+  </div>
+
+  <div>
+  <%= f.label :weight %>
+  <%= f.text_field :weight %>
+  </div>
+
+  <div>
+  <%= f.label :distance %>
+  <%= f.text_field :distance %>
+  </div>
+
+  <div>
+  <%= f.submit 'Buscar' %>
+  </div>
+<% end %>
+</section>

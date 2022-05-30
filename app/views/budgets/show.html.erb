@@ -1,0 +1,23 @@
+<h1>Orçamentos obtidos:</h1>
+<% if @search_result.present?%>
+  <table>
+    <thead>
+    <tr>
+      <th> | Transportadora: |</th>
+      <th> | Valor do frete: |</th>
+      <th> | Prazo de entrega: | </th>
+    </tr>
+    </thead>
+    <tbody>
+      <% @search_result.each do |budget| %>
+        <tr>
+          <td> | <%= budget[:carrier].brand_name %> | </td>
+          <td> | <%= number_to_currency(budget[:final_price]) %> | </td>
+          <td> | <%= budget[:deadline][0].km_time %> Dia(s) úteis | </td>
+        </tr>
+      <% end %>
+    <tbody>
+  </table>
+<% else%>
+</p> Não foi encontrado nenhum orçamento para estes dados.<p>
+<% end %>

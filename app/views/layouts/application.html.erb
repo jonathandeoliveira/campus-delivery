@@ -21,6 +21,7 @@
               <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
           <% elsif admin_signed_in? %>
               <%= link_to 'Tabelas de preços', prices_path %> |
+              <%= link_to 'Consultar orçamento', budgets_path%> |
               <%= link_to 'Ordens de serviço', orders_path %> |
               <%= link_to('Cadastrar Transportadora', new_carrier_path)%> |
               <%= current_admin.email %>
