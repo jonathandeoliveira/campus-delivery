@@ -7,7 +7,7 @@ class Order < ApplicationRecord
   validates :vehicle_id, presence: true, unless: :enum_validation
   validates :status, :size, :weight, :customar_name, :customer_adress,:distance,:track_number, :product_number,:delivery_deadline, presence: true
   validates :size, :weight, :distance, numericality: { greater_than: -1 }
-  before_validation :generate_track_number 
+  before_validation :generate_track_number, on: :create
   before_validation :final_price
   before_validation :deadline
 

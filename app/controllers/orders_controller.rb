@@ -46,8 +46,11 @@ class OrdersController < ApplicationController
 
   def accept
     @order =  Order.find(params[:id])
-    @order.accepted!
+    if @order.accepted!
     redirect_to carrier_order_path(@order.id), notice: 'Ordem atualizada com sucesso'
+    else 
+      redirect_to carrier_order_path(@order.id), notice: 'Por favor, selecione um veiculo'
+    end
   end
   
   def deny
