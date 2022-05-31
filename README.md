@@ -14,14 +14,14 @@
   🔹	[Ideias para implementações futuras](#ideias-para-implementações-futuras)</br>
 
 #### <p align="justify"> Descrição do projeto </p>
-O projeto consiste da criação de uma aplicação web responsável por gerenciar meios de transporte disponíveis para e-commerces.
+O projeto consiste na criação de uma aplicação web responsável por gerenciar meios de transporte disponíveis para e-commerces.
 
 
 #### <p align="justify"> Funcionalidades </p>
 
 - [X] Administradores da plataforma podem cadastrar transportadoras, bem como classificá-las como ativas ou inativas para buscas ou orçamentos futuros
 - [x] Administradores podem consultar valores de frete de suas transportadoras.
-- [X] Transporadoras podem cadastrar usuários vinculadas e ela
+- [X] Transporadoras podem cadastrar usuários vinculadas a ela
 - [X] Usuários só podem visualizar sua transportadora na plataforma
 - [x] Usuários podem cadastrar veículos, prazos e valores de frete
 - [X] Usuários podem aceitar ou recusar ordens de serviço
@@ -34,7 +34,7 @@ O projeto consiste da criação de uma aplicação web responsável por gerencia
 - [Rails 7.0](https://guides.rubyonrails.org) - Framerwork utilizado para desenvolver o projeto
 - [Rspec](https://github.com/rspec/rspec-rails) - Utilizado para os testes da aplicação
 - [Capybara](https://github.com/teamcapybara/capybara#using-capybara-with-rspec) -Auxilia o rspec durante os testes
-- [Devise](https://github.com/heartcombo/devise) -	Utilziada para gerenciamento dos usuários
+- [Devise](https://github.com/heartcombo/devise) -	Utiliziada para gerenciamento dos usuários
 - [Pry-byebug](https://github.com/deivid-rodriguez/pry-byebug) - Utilizada para debugar o código
 
 #### Como instalar a aplicação:
@@ -43,7 +43,7 @@ Clone o repositório em seu computador:
 
     $ git clone  https://github.com/jonathandeoliveira/campus-delivery.git 
 
-Instale as dependencias do projeto:
+Instale as dependências do projeto:
 
     $ bundle install
 
